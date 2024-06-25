@@ -38,3 +38,61 @@ Triad:  26564.8 0.139407 0.090345 0.202934
 
 ### Day 2 - 25/06/2024
 
+1. CUDA-labs/labs/1_deviceQuery/
+2. CUDA-labs/labs/2_hello/
+3. CUDA-labs/labs/3_vectorAdd/
+4. CUDA-labs/labs/4_Stencil1D/
+5. CUDA-labs/labs/5_bandwidthTest/
+
+[sebin.shajiphilip@deeplearning01 5_bandwidthTest]$ ./bandwidthTest 
+[CUDA Bandwidth Test] - Starting...
+Running on...
+
+ Device 0: NVIDIA A100-SXM4-80GB
+ Quick Mode
+
+ Host to Device Bandwidth, 1 Device(s)
+ PINNED Memory Transfers
+   Transfer Size (Bytes)	Bandwidth(MB/s)
+   33554432			15158.9
+
+ Device to Host Bandwidth, 1 Device(s)
+ PINNED Memory Transfers
+   Transfer Size (Bytes)	Bandwidth(MB/s)
+   33554432			14349.9
+
+ Device to Device Bandwidth, 1 Device(s)
+ PINNED Memory Transfers
+   Transfer Size (Bytes)	Bandwidth(MB/s)
+   33554432			1426243.5
+
+##### Result = PASS
+----------------------------------------------------------
+[sebin.shajiphilip@deeplearning01 5_bandwidthTest]$ ./bandwidthTest memory pageable
+[CUDA Bandwidth Test] - Starting...
+Running on...
+
+ Device 0: NVIDIA A100-SXM4-80GB
+ Quick Mode
+
+ Host to Device Bandwidth, 1 Device(s)
+ PAGEABLE Memory Transfers
+   Transfer Size (Bytes)	Bandwidth(MB/s)
+   33554432			14264.3
+
+ Device to Host Bandwidth, 1 Device(s)
+ PAGEABLE Memory Transfers
+   Transfer Size (Bytes)	Bandwidth(MB/s)
+   33554432			8488.3
+
+ Device to Device Bandwidth, 1 Device(s)
+ PAGEABLE Memory Transfers
+   Transfer Size (Bytes)	Bandwidth(MB/s)
+   33554432			1431887.4
+
+##### Result = PASS
+-------------------------------------------------------
+
+-------------------------------------------------------------
+
+### Day 3 - 27/06/2024
