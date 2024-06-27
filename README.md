@@ -96,3 +96,10 @@ Running on...
 -------------------------------------------------------------
 
 ### Day 3 - 27/06/2024
+
+1. CUDA-labs/labs/6_vectorAdd_UVM/
+2. CUDA-labs/labs/7_MatMul
+3. CUDA-labs/labs/8_MatrixTranspose
+4. CUDA-labs/labs/9_Reduction
+5. CUDA-labs/labs/10_MultiGPUs_singleThread
+-------------------------------------------------------
