@@ -110,7 +110,10 @@ void runJacobi1DCUDA(int tsteps, int n, double* A, double* B, double* A_outputFr
   cudaMemcpy(d_B0, B, (n/2+1) * sizeof(double), cudaMemcpyHostToDevice);
 
   cudaSetDevice(1);
-  //FIXME 
+  cudaMalloc(&d_A1, (n/2+1) * sizeof(double));
+  cudaMalloc(&d_B1, (n/2+1) * sizeof(double));
+  cudaMemcpy(d_A1, A, (n/2+1) * sizeof(double), cudaMemcpyHostToDevice);
+  cudaMemcpy(d_B1, B, (n/2+1) * sizeof(double), cudaMemcpyHostToDevice); 
   
 
   dim3 block(DIM_THREAD_BLOCK_X, DIM_THREAD_BLOCK_Y);
@@ -121,15 +124,15 @@ void runJacobi1DCUDA(int tsteps, int n, double* A, double* B, double* A_outputFr
     runJacobiCUDA_kernel <<< grid, block >>> (n/2+1, d_A0, d_B0);
 
     cudaSetDevice(1);
-    //FIXME 
+    runJacobiCUDA_kernel <<< grid, block >>> (n/2+1, d_A1, d_B1);
 
     cudaSetDevice(0);
     cudaDeviceSynchronize();
     double* tmp0 = d_A0; d_A0 = d_B0; d_B0 = tmp0; // swap
     cudaSetDevice(1);
-    //FIXME
-
+    cudaDeviceSynchronize();
     double* tmp1 = d_A1; d_A1 = d_B1; d_B1 = tmp1; // swap
+
 
     // ---> update halos directly using cudaMemcpyPeer peer to peer transfers version 1 <--- //
     //FIXME 
